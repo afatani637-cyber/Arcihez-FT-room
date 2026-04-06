@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcihez Room - Sewa Room FF Battle Royale</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2.5em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-btn {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255,107,107,0.4);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 0;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .packages {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .package-card {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+            border-color: #ff6b6b;
+        }
+
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .package-card:hover::before {
+            left: 100%;
+        }
+
+        .price {
+            font-size: 3em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 20px 0;
+        }
+
+        .rank-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #333;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(255,215,0,0.4);
+        }
+
+        .features {
+            list-style: none;
+            margin: 25px 0;
+        }
+
+        .features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .features li i {
+            color: #4ecdc4;
+            font-size: 1.2em;
+        }
+
+        .order-btn {
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .order-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(78,205,196,0.4);
+        }
+
+        .tournament-section {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 60px 0;
+            border-radius: 20px;
+            margin: 60px 0;
+        }
+
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .payment-icon {
+            font-size: 2.5em;
+            padding: 20px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .payment-icon:hover {
+            transform: scale(1.1);
+            background: rgba(255,255,255,0.3);
+        }
+
+        .contact-section {
+            text-align: center;
+            padding: 60px 0;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            margin: 60px 0;
+        }
+
+        .phone-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 20px 0;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: #25D366;
+            color: white;
+            padding: 20px 40px;
+            border-radius: 50px;
+            font-size: 1.3em;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(37,211,102,0.4);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .payment-methods {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .maps-grid {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .map-btn {
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 25px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .map-btn:hover, .map-btn.active {
+            background: rgba(255,255,255,0.9);
+            color: #333;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-fire"></i> Arcihez Room
+                </div>
+                <a href="https://wa.me/628815346307" class="contact-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Hubungi Admin
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Arcihez Room</h1>
+            <p>Sewa Room FF Battle Royale Terbaik - Rank Heroic+</p>
+            <div class="maps-grid">
+                <button class="map-btn active" onclick="selectMap('Bermuda')">Bermuda</button>
+                <button class="map-btn" onclick="selectMap('Kalahari')">Kalahari</button>
+                <button class="map-btn" onclick="selectMap('Purgatory')">Purgatory</button>
+                <button class="map-btn" onclick="selectMap('Alpine')">Alpine</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="packages">
+        <div class="container">
+            <h2 class="section-title">Pilih Paket Sewa Room</h2>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="rank-badge">HEROIC</div>
+                    <div class="price">500 <span style="font-size:0.5em;">Perak</span></div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Room Battle Royale</li>
+                        <li><i class="fas fa-check"></i> Rank Heroic Bronze - Silver</li>
+                        <li><i class="fas fa-check"></i> Map Sesuka Hati</li>
+                        <li><i class="fas fa-check"></i> 30 Menit Permainan</li>
+                        <li><i class="fas fa-check"></i> Anti DC</li>
+                    </ul>
+                    <button class="order-btn" onclick="orderRoom('Heroic', 500)">PESAN ROOM</button>
+                </div>
+
+                <div class="package-card">
+                    <div class="rank-badge">ELITE</div>
+                    <div class="price">1.000 <span style="font-size:0.5em;">Perak</span></div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Room Battle Royale</li>
+                        <li><i class="fas fa-check"></i> Rank Elite</li>
+                        <li><i class="fas fa-check"></i> Map Sesuka Hati</li>
+                        <li><i class="fas fa-check"></i> 45 Menit Permainan</li>
+                        <li><i class="fas fa-check"></i> Anti DC + Custom Room</li>
+                    </ul>
+                    <button class="order-btn" onclick="orderRoom('Elite', 1000)">PESAN ROOM</button>
+                </div>
+
+                <div class="package-card">
+                    <div class="rank-badge">HEROIC GOLD</div>
+                    <div class="price">2.000 <span style="font-size:0.5em;">Perak</span></div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Room Battle Royale</li>
+                        <li><i class="fas fa-check"></i> Rank Heroic Gold</li>
+                        <li><i class="fas fa-check"></i> Map Sesuka Hati</li>
+                        <li><i class="fas fa-check"></i> 60 Menit Permainan</li>
+                        <li><i class="fas fa-check"></i> Anti DC + VIP Room</li>
+                    </ul>
+                    <button class="order-btn" onclick="orderRoom('Heroic Gold', 2000)">PESAN ROOM</button>
+                </div>
+
+                <div class="package-card">
+                    <div class="rank-badge">GRANDMASTER</div>
+                    <div class="price">5.000 <span style="font-size:0.5em;">Perak</span></div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Room Battle Royale</li>
+                        <li><i class="fas fa-check"></i> Rank Grandmaster</li>
+                        <li><i class="fas fa-check"></i> Map Sesuka Hati</li>
+                        <li><i class="fas fa-check"></i> 90 Menit Permainan</li>
+                        <li><i class="fas fa-check"></i> Anti DC + Exclusive Room</li>
+                    </ul>
+                    <button class="order-btn" onclick="orderRoom('Grandmaster', 5000)">PESAN ROOM</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tournament-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Fitur Turnamen</h2>
+            <p style="text-align: center; font-size: 1.3em; color: white; margin-bottom: 40px;">
+                Daftarkan tim Anda untuk turnamen mingguan dengan hadiah <strong>50K - 500K</strong>!
+            </p>
+            <div style="text-align: center;">
+                <button class="order-btn" style="background: linear-gradient(45deg, #ff6b6b, #ee5a52); font-size: 1.5em; padding: 20px 60px;" onclick="orderTournament()">
+                    <i class="fas fa-trophy"></i> DAFTAR TURNAMEN
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="packages">
+        <div class="container">
+            <h2 class="section-title">Metode Pembayaran</h2>
+            <div class="payment-methods">
+                <div class="payment-icon">
+                    <i class="fab fa-cc-visa"></i><br><small>OVO</small>
+                </div>
+                <div class="payment-icon">
+                    <i class="fab fa-cc-paypal"></i><br><small>DANA</small>
+                </div>
+                <div class="payment-icon">
+                    <i class="fas fa-money-bill-wave"></i><br><small>GoPay</small>
+                </div>
+                <div class="payment-icon">
+                    <i class="fas fa-coins"></i><br><small>ShopeePay</small>
+                </div>
+                <div class="payment-icon">
+                    <i class="fas fa-university"></i><br><small>Bank</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="container">
+            <h2 style="font-size: 2.5em; margin-bottom: 20px;">Hubungi Admin FT Arcihez</h2>
+            <div class="phone-number">0881-5346-307</div>
+            <p style="font-size: 1.2em; margin-bottom: 30px;">Siap melayani 24/7 • Respon Cepat • Room Instan</p>
+            <a href="https://wa.me/628815346307?text=Halo%20Admin%20Arcihez%20Room%2C%20saya%20mau%20sewa%20room%20FF" class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> Chat WhatsApp Sekarang
+            </a>
+        </div>
+    </section>
+
+    <script>
+        let selectedMap = 'Bermuda';
+
+        function selectMap(map) {
+            selectedMap = map;
+            document.querySelectorAll('.map-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        function orderRoom(rank, price) {
+            const message = `Halo Admin Arcihez Room!%0A%0ASaya mau pesan room:%0A📍 Map: ${selectedMap}%0A🏆 Rank: ${rank}%0A💰 Harga: ${price} Perak%0A%0AKapan bisa dibuat roomnya?`;
+            window.open(`https://wa.me/628815346307?text=${message}`, '_blank');
+        }
+
+        function orderTournament() {
+            const message = `Halo Admin!%0ASaya mau daftar turnamen Arcihez Room%0A📍 Map: ${selectedMap}%0A%0AInfo Tim:%0A(Nama Tim & Kontak)%0A%0AKapan jadwal turnamen berikutnya?`;
+            window.open(`https://wa.me/628815346307
